@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year ❤️</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #ffedf2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+  }
+  #gif-section, #heart-section, #final-message {
+    display: none;
+  }
+  #gif-section img {
+    max-width: 80%;
+    border-radius: 10px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #ff6b81;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #ff4757;
+  }
+  #heart {
+    font-size: 150px;
+    color: red;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  #heart:active {
+    transform: scale(0.9);
+  }
+  .explode {
+    animation: explode 1s forwards;
+  }
+  @keyframes explode {
+    0% { transform: scale(1); opacity:1; }
+    50% { transform: scale(3) rotate(180deg); opacity:0.5; }
+    100% { transform: scale(0) rotate(360deg); opacity:0; }
+  }
+  #final-message {
+    font-size: 36px;
+    color: #ff4757;
+    animation: fadeIn 1s forwards;
+  }
+  @keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity:1; }
+  }
+</style>
+</head>
+<body>
+
+<div id="landing">
+  <h1>Happy New Year ❤️</h1>
+  <div id="gif-section">
+    <img src="https://giphy.com/gifs/Alissandra-Sementilli-love-kisses-all-over-Vi0Ws3t4JSLOgdkaBq" alt="New Year GIF">
+    <br>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<div id="heart-section">
+  <p>Click the heart 10 times!</p>
+  <div id="heart">❤️</div>
+</div>
+
+<div id="final-message">
+  🎉 Happy New Year, my love! 🎉
+</div>
+
+<script>
+  const gifSection = document.getElementById('gif-section');
+  const startBtn = document.getElementById('startBtn');
+  const heartSection = document.getElementById('heart-section');
+  const heart = document.getElementById('heart');
+  const finalMessage = document.getElementById('final-message');
+
+  // Show GIF section initially
+  gifSection.style.display = 'block';
+
+  startBtn.onclick = () => {
+    gifSection.style.display = 'none';
+    heartSection.style.display = 'block';
+  };
+
+  let clicks = 0;
+  heart.onclick = () => {
+    clicks++;
+    if (clicks >= 10) {
+      // Explode heart
+      heart.classList.add('explode');
+      setTimeout(() => {
+        heartSection.style.display = 'none';
+        finalMessage.style.display = 'block';
+      }, 1000);
+    }
+  };
+</script>
+
+</body>
+</html>
